@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Domain.Entities
+namespace CarBook.Application.Features.CQRS.Commands.ContactCommands
 {
-    public class Contact
+    public class UpdateContactCommand
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

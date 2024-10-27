@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Domain.Entities
+namespace CarBook.Application.Features.CQRS.Results.ContactResults
 {
-    public class Contact
+    public class GetContactQueryResult
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
