@@ -1,5 +1,5 @@
 ﻿using CarBook.Application.Features.Mediator.Queries.FeatureQueries;
-using CarBook.Application.Features.Mediator.Results;
+using CarBook.Application.Features.Mediator.Results.FeatureResults;
 using CarBook.Application.Interfaces;
 using CarBook.Domain.Entities;
 using MediatR;
