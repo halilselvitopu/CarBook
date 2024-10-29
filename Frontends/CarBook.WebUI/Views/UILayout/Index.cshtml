@@ -3,3 +3,26 @@
     Layout = null;
 }
 
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("UILayoutHead")
+
+  <body>
+
+    @await Component.InvokeAsync("UILayoutNavbar")
+
+    <!-- END nav -->
+    @await Component.InvokeAsync("UILayoutMainCover")
+
+    @RenderBody()
+
+    @await Component.InvokeAsync("UILayoutFooter")
+    
+  <!-- loader -->
+    @await Component.InvokeAsync("UILayoutLoader")
+
+    @await Component.InvokeAsync("UILayoutScripts")
+
+  </body>
+</html>
