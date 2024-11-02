@@ -14,9 +14,9 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandlers
 {
     public class GetPricingByIdQueryHandler : IRequestHandler<GetPricingByIdQuery, GetPricingByIdQueryResult>
     {
-        private readonly IRepository<Pricing> _repository;
+        private readonly IRepository<PricingType> _repository;
 
-        public GetPricingByIdQueryHandler(IRepository<Pricing> repository)
+        public GetPricingByIdQueryHandler(IRepository<PricingType> repository)
         {
             _repository = repository;
         }

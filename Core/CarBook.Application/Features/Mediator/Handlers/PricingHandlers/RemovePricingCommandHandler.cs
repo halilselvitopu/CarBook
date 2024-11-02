@@ -12,9 +12,9 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandlers
 {
     public class RemovePricingCommandHandler : IRequestHandler<RemovePricingCommand>
     {
-        private readonly IRepository<Pricing> _repository;
+        private readonly IRepository<PricingType> _repository;
 
-        public RemovePricingCommandHandler(IRepository<Pricing> repository)
+        public RemovePricingCommandHandler(IRepository<PricingType> repository)
         {
             _repository = repository;
         }

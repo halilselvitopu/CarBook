@@ -24,6 +24,7 @@ namespace CarBook.Persistence.Repositories.CarRepositories
             return await _context.Cars.Include(x => x.Brand).ToListAsync();
         }
 
+
         public Task<List<Car>> GetLast5CarsWithBrands()
         {
             return _context.Cars.Include(x =>x.Brand).OrderByDescending(x => x.Id).Take(5).ToListAsync();

@@ -12,16 +12,16 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandlers
 {
     public class CreatePricingCommandHandler : IRequestHandler<CreatePricingCommand>
     {
-        private readonly IRepository<Pricing> _repository;
+        private readonly IRepository<PricingType> _repository;
 
-        public CreatePricingCommandHandler(IRepository<Pricing> repository)
+        public CreatePricingCommandHandler(IRepository<PricingType> repository)
         {
             _repository = repository;
         }
 
         public async Task Handle(CreatePricingCommand request, CancellationToken cancellationToken)
         {
-            await _repository.CreateAsync(new Pricing
+            await _repository.CreateAsync(new PricingType
             {
                 Name = request.Name,
             });

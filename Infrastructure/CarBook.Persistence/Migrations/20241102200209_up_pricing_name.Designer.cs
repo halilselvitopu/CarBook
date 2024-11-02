@@ -4,6 +4,7 @@ using CarBook.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarBook.Persistence.Migrations
 {
     [DbContext(typeof(CarBookContext))]
-    partial class CarBookContextModelSnapshot : ModelSnapshot
+    [Migration("20241102200209_up_pricing_name")]
+    partial class up_pricing_name
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -381,7 +384,7 @@ namespace CarBook.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PricingTypes");
+                    b.ToTable("Pricings");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.RentalPrice", b =>
@@ -398,14 +401,14 @@ namespace CarBook.Persistence.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("PricingTypeId")
+                    b.Property<int>("PricingId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
 
-                    b.HasIndex("PricingTypeId");
+                    b.HasIndex("PricingId");
 
                     b.ToTable("RentalPrices");
                 });
@@ -561,15 +564,15 @@ namespace CarBook.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CarBook.Domain.Entities.PricingType", "PricingType")
+                    b.HasOne("CarBook.Domain.Entities.PricingType", "Pricing")
                         .WithMany("RentalPrices")
-                        .HasForeignKey("PricingTypeId")
+                        .HasForeignKey("PricingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Car");
 
-                    b.Navigation("PricingType");
+                    b.Navigation("Pricing");
                 });
 
             modelBuilder.Entity("CarBook.Domain.Entities.Author", b =>

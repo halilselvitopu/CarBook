@@ -12,9 +12,9 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandlers
 {
     public class UpdatePricingCommandHandler : IRequestHandler<UpdatePricingCommand>
     {
-        private readonly IRepository<Pricing> _repository;
+        private readonly IRepository<PricingType> _repository;
 
-        public UpdatePricingCommandHandler(IRepository<Pricing> repository)
+        public UpdatePricingCommandHandler(IRepository<PricingType> repository)
         {
             _repository = repository;
         }
