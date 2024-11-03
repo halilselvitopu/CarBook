@@ -27,5 +27,7 @@ namespace CarBook.Persistence.Repositories.BlogRepositories
         {
             return await _context.Blogs.Include(x => x.Author).OrderByDescending(x => x.Id).Take(3).ToListAsync();
         }
+
+       
     }
 }
