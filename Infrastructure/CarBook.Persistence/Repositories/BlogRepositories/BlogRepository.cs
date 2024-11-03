@@ -19,6 +19,10 @@ namespace CarBook.Persistence.Repositories.BlogRepositories
             _context = context;
         }
 
+        public async Task<List<Blog>> GetBlogsWithAuthors()
+        {
+            return await _context.Blogs.Include(x => x.Author).Include(y => y.BlogCategory).ToListAsync();
+        }
         public async Task<List<Blog>> GetLast3BlogsWithAuthors()
         {
             return await _context.Blogs.Include(x => x.Author).OrderByDescending(x => x.Id).Take(3).ToListAsync();
