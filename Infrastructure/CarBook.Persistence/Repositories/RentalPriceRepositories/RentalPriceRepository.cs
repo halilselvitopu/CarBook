@@ -21,7 +21,7 @@ namespace CarBook.Persistence.Repositories.RentalPriceRepositories
 
         public Task<List<RentalPrice>> GetRentalPrices()
         {
-            var values = _context.RentalPrices.Include(x => x.Car).ThenInclude(y => y.Brand).Include(z => z.PricingType).Where(p => p.PricingTypeId == 3).ToListAsync();
+            var values = _context.RentalPrices.Include(x => x.Car).ThenInclude(y => y.Brand).Include(z => z.PricingType).Where(p => p.PricingTypeId == 2).ToListAsync();
             return values;
         }
     }

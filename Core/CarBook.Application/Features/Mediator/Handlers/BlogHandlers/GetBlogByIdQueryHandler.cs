@@ -30,6 +30,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.BlogHandlers
                 CreatedTime = value.CreatedTime,
                 ImageUrl = value.ImageUrl,
                 Title = value.Title,
+                Content = value.Content,
             };
         }
     }

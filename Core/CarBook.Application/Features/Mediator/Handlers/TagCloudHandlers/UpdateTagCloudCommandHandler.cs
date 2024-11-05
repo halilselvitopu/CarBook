@@ -24,6 +24,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.TagCloudHandlers
             var value = await _repository.GetByIdAsync(request.Id);
             value.Title = request.Title;
             value.Id = request.Id;
+            value.BlogId = request.BlogId;
             await _repository.UpdateAsync(value);
         }
     }
