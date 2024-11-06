@@ -6,7 +6,7 @@
     
     @await Component.InvokeAsync("BlogDetailTagCloudByBlog", new { id = ViewBag.BlogId})
 
-    @await Component.InvokeAsync("BlogDetailAboutAuthor")
+    @await Component.InvokeAsync("BlogDetailAboutAuthor", new { id = ViewBag.BlogId })
     
 
 
