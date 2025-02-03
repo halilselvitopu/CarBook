@@ -26,7 +26,15 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
 
         public async Task<List<Comment>> GetAllAsync()
         {
-            return await _context.Comments.ToListAsync();
+            return await _context.Comments.Select(x => new Comment
+            {
+                Id = x.Id,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                CreatedTime = x.CreatedTime,
+                Content = x.Content,
+                BlogId = x.BlogId,
+            }).ToListAsync();
         }
 
         public async Task<Comment> GetByIdAsync(int id)
@@ -36,7 +44,8 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
 
         public async Task RemoveAsync(Comment entity)
         {
-            _context.Comments.Remove(entity);
+            var value = await _context.Comments.FindAsync(entity.Id);
+            _context.Comments.Remove(value);
             await _context.SaveChangesAsync();
 
         }
