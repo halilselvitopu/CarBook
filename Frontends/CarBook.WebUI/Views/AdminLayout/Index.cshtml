@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+@await Component.InvokeAsync("AdminHeader")
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        @await Component.InvokeAsync("AdminNavbar")
+
+        <!-- ========== Left Sidebar Start ========== -->
+        @await Component.InvokeAsync("AdminSidebar")
+        <!-- Left Sidebar End -->
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            @RenderBody()
+            <!-- End Page-content -->
+            @await Component.InvokeAsync("AdminFooter")         
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+    <!-- Overlay-->
+    @await Component.InvokeAsync("AdminScripts")
+</body>
+
+</html>
+
