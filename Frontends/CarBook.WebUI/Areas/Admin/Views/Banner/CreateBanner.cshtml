@@ -1,0 +1,48 @@
+﻿ @model CreateBannerDto
+@{
+    ViewData["Title"] = "CreateBanner";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Yeni Banner Girişi</h4>
+                        <p class="card-subtitle mb-4">
+                            Banner güncelleme işlemini buradan yapabilirsiniz. Temada bozulma olmaması adına yeni bir banner girişi yapmadan önce eski bannerı siliniz. İşlem sonucunda bir adet banner kalmalıdır.
+                        </p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Başlık girişi yapınız.">
+                                <label>Açıklama</label>
+                                <input type="text" class="form-control" asp-for="Description" placeholder="Açıklama girişi yapınız.">
+                                <label>Video Açıklama</label>
+                                <input type="text" class="form-control" asp-for="VideoDescription" placeholder="Video açıklaması girişi yapınız.">
+                                <label>Video URL</label>
+                                <input type="text" class="form-control" asp-for="VideoUrl" placeholder="Video Youtube Embed linki girişi yapınız.">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Banner Bilgisini Kaydet</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+
+    </div>
+    <!-- end col -->
+    <!-- end col -->
+</div>
+<!-- end page title -->
+
