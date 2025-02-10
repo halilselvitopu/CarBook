@@ -1,0 +1,47 @@
+﻿@model UpdateAboutDto
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Hakkımızda Alanı Güncelleme Sayfası</h4>
+                        <p class="card-subtitle mb-4">
+                            Hakkımızda alanı güncelleme işlemini buradan yapabilirsiniz. Temada bozulma olmaması adına yeni bir hakkımızda girişi yapmadan önce eski hakkımızda kısmını siliniz. İşlem sonucunda bir adet Hakkımızda alanı kalmalıdır.
+                        </p>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <label>Başlık</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Başlık girişi yapınız.">
+                                <label>Açıklama</label>
+                                <textarea rows="5" class="form-control" asp-for="Description" placeholder="Açıklama girişi yapınız."></textarea>
+                                <label>Görsel</label>
+                                <input type="text" class="form-control" asp-for="ImageUrl" placeholder="Video linki girişi yapınız.">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Hakkımızda Bilgisini Güncelle</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+
+    </div>
+    <!-- end col -->
+    <!-- end col -->
+</div>
+<!-- end page title -->
+

@@ -1,0 +1,63 @@
+﻿@model List<ResultAuthorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Brandd">
+                    <div class="Brandd-body">
+                        <h4 class="Brandd-title">Yazar Alanı</h4>
+                        <p class="Brandd-subtitle mb-4">
+                            Yazar ile ilgili işlemleri bu bölümden düzenleyebilirsiniz.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ad Soyad</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                        <th>Yazarın Blogları</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+
+                                        <tr>
+                                            <td>@count</td>
+                                            <td><img src="@item.ImageUrl" width="50" height="50" style="margin-right:10px " /> @item.FirstName @item.LastName</td>
+                                            <td><a href="/Admin/Author/RemoveAuthor/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/Author/UpdateAuthor/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
+                                            <td><a href="/Admin/About/UpdateAbout/@item.Id" class="btn btn-outline-warning">Yazarın Bloglarına Git</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/Author/CreateAuthor/" class="btn btn-outline-primary">Yeni Yazar Ekle</a></td>
+                        </div>
+
+                    </div>
+                    <!-- end Brandd-body-->
+                </div>
+                <!-- end Brandd -->
+
+            </div>
+            <!-- end col -->
+            <!-- end col -->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+

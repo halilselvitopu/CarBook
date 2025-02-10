@@ -39,9 +39,9 @@ namespace CarBook.WebApi.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> RemoveAuthor(RemoveAuthorCommand command)
+        public async Task<IActionResult> RemoveAuthor(int id)
         {
-            await _mediator.Send(command);
+            await _mediator.Send(new RemoveAuthorCommand(id));
             return Ok("Başarıyla Silindi");
         }
 
