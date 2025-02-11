@@ -39,9 +39,9 @@ namespace CarBook.WebApi.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> RemovePricing(RemovePricingCommand command)
+        public async Task<IActionResult> RemovePricing(int id)
         {
-            await _mediator.Send(command);
+            await _mediator.Send(new RemovePricingCommand(id));
             return Ok("Başarıyla Silindi.");
         }
 

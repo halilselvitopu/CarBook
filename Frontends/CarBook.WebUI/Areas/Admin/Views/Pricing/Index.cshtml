@@ -1,0 +1,61 @@
+﻿@model List<ResultPricingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Brandd">
+                    <div class="Brandd-body">
+                        <h4 class="Brandd-title">Ödeme Türleri Alanı</h4>
+                        <p class="Brandd-subtitle mb-4">
+                            Ödeme Türleri ile ilgili işlemleri bu bölümden düzenleyebilirsiniz.
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Ödeme Türü</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Name</td>
+                                            <td><a href="/Admin/Pricing/RemovePricing/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/Pricing/UpdatePricing/@item.Id" class="btn btn-outline-warning">Güncelle</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                                <a href="/Admin/Pricing/CreatePricing" class="btn btn-outline-primary waves-effect waves-light">Yeni Ödeme Türü Ekle</a>
+                        </div>
+
+                    </div>
+                    <!-- end Brandd-body-->
+                </div>
+                <!-- end Brandd -->
+
+            </div>
+            <!-- end col -->
+            <!-- end col -->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+
