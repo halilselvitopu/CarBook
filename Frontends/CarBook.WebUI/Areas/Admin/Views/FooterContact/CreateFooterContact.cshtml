@@ -1,0 +1,47 @@
+﻿@model CreateFooterContactDto
+@{
+    ViewData["Title"] = "CreateFooterContact";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Yeni Adres Bilgisi Girişi</h4>
+                        <p class="card-subtitle mb-4">
+                            Adres bilgisi ekleme işlemini buradan yapabilirsiniz. Temada bozulma olmaması adına yeni bir banner girişi yapmadan önce eski adresi siliniz. İşlem sonucunda bir adet adres bilgisi kalmalıdır.
+                        </p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label>Adres</label>
+                                <input type="text" class="form-control" asp-for="Address" placeholder="Adres girişi yapınız.">
+                                <label>Telefon Numarası</label>
+                                <input type="tel" class="form-control" asp-for="PhoneNumber" placeholder="Telefon numarası girişi yapınız.">
+                                <label>Email</label>
+                                <input type="email" class="form-control" asp-for="Email" placeholder="Email girişi yapınız.">
+                                <label>Açıklama</label>
+                                <textarea class="form-control" rows="3" asp-for="Description" placeholder="Açıklama girişi yapınız."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Adres Bilgisini Kaydet</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+
+    </div>
+    <!-- end col -->
+    <!-- end col -->
+</div>
+<!-- end page title -->

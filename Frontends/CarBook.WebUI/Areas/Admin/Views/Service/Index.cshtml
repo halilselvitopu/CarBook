@@ -1,9 +1,9 @@
-﻿@model List<ResultBannerDto>
+﻿@model List<ResultServiceDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
-
 
 <div class="page-content">
     <div class="container-fluid">
@@ -13,40 +13,39 @@
             <div class="col-xl-12">
                 <div class="Brandd">
                     <div class="Brandd-body">
-                        <h4 class="Brandd-title">Ana Sayfa Banner Alanı</h4>
+                        <h4 class="Brandd-title">Hizmetlerimiz Alanı</h4>
                         <p class="Brandd-subtitle mb-4">
-                            Ana sayfanın banner alanında bulunan bilgileri aşağıdan düzenleyebilirsiniz. Tema bütünlüğünün bozulmaması adına lütfen sadece 1 adet veri giriniz.
+                            Hizmetlerimiz alanında bulunan bilgileri aşağıdan düzenleyebilirsiniz. Tema bütünlüğünün bozulmaması adına 4 adet veri girişi giriniz.
                         </p>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Başlık</th>
+                                        <th>#</th>
+                                        <th>Hizmet</th>
                                         <th>Açıklama</th>
-                                        <th>Video URL</th>
-                                        <th>Video Açıklama</th>
+                                        <th>Icon URL</th>
                                         <th>Sil</th>
                                         <th>Güncelle</th>
-                                        <th>Youtube'da aç</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
+                                        count++;
 
                                         <tr>
-                                             <td>@item.Title</td>
+                                            <td>@count</td>
+                                            <td>@item.Title</td>
                                             <td>@item.Description</td>
-                                            <td>@item.VideoUrl</td>
-                                            <td>@item.Description</td>
-                                            <td><a href="/Admin/Banner/RemoveBanner/@item.Id" class="btn btn-outline-danger">Sil</a></td>
-                                            <td><a href="/Admin/Banner/UpdateBanner/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
-                                            <td><a href="/BrandList/BrandDetail/@item.Id" class="btn btn-outline-dark">Youtube'da Aç</a></td>
+                                            <td>@item.Icon</td>
+                                            <td><a href="/Admin/Service/RemoveService/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Admin/Service/UpdateService/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                            <td><a href="/Admin/Banner/CreateBanner/" class="btn btn-outline-primary">Yeni Banner Ekle</a></td>
+                            <td><a href="/Admin/Service/CreateService/" class="btn btn-outline-primary">Yeni Hizmet Ekle</a></td>
                         </div>
 
                     </div>
@@ -62,3 +61,4 @@
 
     </div> <!-- container-fluid -->
 </div>
+

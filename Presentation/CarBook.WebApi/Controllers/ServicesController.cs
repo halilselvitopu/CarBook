@@ -39,9 +39,9 @@ namespace CarBook.WebApi.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> RemoveService(RemoveServiceCommand command)
+        public async Task<IActionResult> RemoveService(int id)
         {
-            await _mediator.Send(command);
+            await _mediator.Send(new RemoveServiceCommand(id));
             return Ok("Başarıyla Silindi.");
         }
 

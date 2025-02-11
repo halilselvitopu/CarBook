@@ -40,9 +40,9 @@ namespace CarBook.WebApi.Controllers
 
 
         [HttpDelete]
-        public async Task<IActionResult> RemoveFooterContact(RemoveFooterContactCommand command)
+        public async Task<IActionResult> RemoveFooterContact(int id)
         {
-            await _mediator.Send(command);
+            await _mediator.Send(new RemoveFooterContactCommand(id));
             return Ok("Başarıyla Silindi.");
         }
 

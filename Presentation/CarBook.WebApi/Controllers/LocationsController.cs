@@ -38,9 +38,9 @@ namespace CarBook.WebApi.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> RemoveLocation(RemoveLocationCommand command)
+        public async Task<IActionResult> RemoveLocation(int id)
         {
-            await _mediator.Send(command);
+            await _mediator.Send(new RemoveLocationCommand(id));
             return Ok("Başarıyla Silindi.");
         }
 

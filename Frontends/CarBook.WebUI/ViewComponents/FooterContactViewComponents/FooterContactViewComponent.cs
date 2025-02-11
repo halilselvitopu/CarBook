@@ -1,4 +1,4 @@
-﻿using CarBook.Dto.FooterAddressDtos;
+﻿using CarBook.Dto.FooterContactDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 

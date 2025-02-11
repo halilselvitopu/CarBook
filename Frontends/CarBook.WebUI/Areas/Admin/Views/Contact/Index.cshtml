@@ -1,0 +1,65 @@
+﻿@model List<ResultContactDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<!-- Plugins css -->
+<link href="~/Admin/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+<link href="~/Admin/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Gelen Mesajlar</h4>
+                        <p class="card-subtitle mb-4">
+                            Ana Sayfa üzerinden kullanıcıların iletişim panelinden gönderdiği mesajların listesi.
+                        </p>
+
+                        <table id="basic-datatable" class="table dt-responsive nowrap">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Ad Soyad</th>
+                                    <th>Konu</th>
+                                    <th>Mail</th>
+                                    <th>Tarih</th>
+                                    <th>Mesaj</th>
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.FirstName @item.LastName</td>
+                                        <td>@item.Subject</td>
+                                        <td>@item.Email</td>
+                                        <td>@item.SendDate.ToShortDateString()</td>
+                                        <td>@item.Message</td>
+                                    </tr>
+                                    
+                                }
+                            </tbody>
+                        </table>
+
+                    </div> <!-- end card body-->
+                </div> <!-- end card -->
+            </div><!-- end col-->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>
+
