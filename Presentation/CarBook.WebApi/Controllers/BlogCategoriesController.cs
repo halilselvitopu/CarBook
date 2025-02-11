@@ -46,9 +46,9 @@ namespace CarBook.WebApi.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> RemoveBlogCategory(RemoveBlogCategoryCommand command)
+        public async Task<IActionResult> RemoveBlogCategory(int id)
         {
-            await _removeBlogCategoryHandler.Handle(command);
+            await _removeBlogCategoryHandler.Handle(new RemoveBlogCategoryCommand(id));
             return Ok("Başarıyla Silindi.");
         }
 

@@ -1,0 +1,68 @@
+﻿@model List<ResultBlogsWithAuthorsDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Brandd">
+                    <div class="Brandd-body">
+                        <h4 class="Brandd-title">Blog Listesi</h4>
+                        <p class="Brandd-subtitle mb-4">
+                            Bloglar ile ilgili işlemleri bu bölümden düzenleyebilirsiniz. Yeni blog ekleme işlemi admin tarafından yapılmamaktadır. Blog eklemek isterseniz sisteme yazar olarak giriş yapınız. Her yazar sadece kendi bloglarını güncelleyebilmektedir.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Başlık</th>
+                                        <th>Yazar</th>
+                                        <th>Kategori</th>
+                                        <th>Tarih</th>
+                                        <th>Sil</th>
+                                        <th>Bloğu Aç</th>
+                                        <th>Bloğa Ait Yorumlar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+
+                                        <tr>
+                                            <td>@count</td>
+                                            <td>@item.Title</td>
+                                            <td>@item.AuthorFirstName @item.AuthorLastName</td>
+                                            <td>@item.BlogCategoryName</td>
+                                            <td>@item.CreatedTime</td>
+                                            <td><a href="/Admin/Blog/RemoveBlog/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/Blog/BlogDetail/@item.Id" class="btn btn-outline-warning">Bloğu Aç</a></td>
+                                            <td><a href="/Admin/Comment/Index/@item.Id" class="btn btn-outline-warning">Bloğun Yorumları</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    <!-- end Brandd-body-->
+                </div>
+                <!-- end Brandd -->
+
+            </div>
+            <!-- end col -->
+            <!-- end col -->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+

@@ -13,5 +13,6 @@ namespace CarBook.Application.Features.RepositoryPattern
         Task CreateAsync(T entity);
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
+        Task<List<T>> GetCommentsByBlogIdAsync(int blogId);
     }
 }

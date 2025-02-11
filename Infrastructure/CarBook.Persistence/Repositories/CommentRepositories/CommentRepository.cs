@@ -42,6 +42,11 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
             return await _context.Comments.FindAsync(id);
         }
 
+        public async Task<List<Comment>> GetCommentsByBlogIdAsync(int id)
+        {
+            return await _context.Set<Comment>().Where(x => x.BlogId == id).ToListAsync();
+        }
+
         public async Task RemoveAsync(Comment entity)
         {
             var value = await _context.Comments.FindAsync(entity.Id);

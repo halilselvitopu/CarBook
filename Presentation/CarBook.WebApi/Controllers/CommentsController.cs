@@ -52,5 +52,12 @@ namespace CarBook.WebApi.Controllers
             var value = await _commentRepository.GetByIdAsync(id);
             return Ok(value);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetCommentsByBlog(int id)
+        {
+            var value = await _commentRepository.GetCommentsByBlogIdAsync(id);
+            return Ok(value);
+        }
     }
 }

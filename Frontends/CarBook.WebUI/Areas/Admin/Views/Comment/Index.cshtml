@@ -1,0 +1,51 @@
+﻿@model List<ResultCommentDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Brandd">
+                    <div class="Brandd-body">
+                        <h4 class="Brandd-title">Yorum Listesi</h4>
+                        <p class="Brandd-subtitle mb-4">
+                            İlgili bloğa yapılan yorumlar ile ilgili işlemleri bu bölümden düzenleyebilirsiniz.
+                        </p>
+                        @foreach (var item in Model)
+                        {
+                            count++;
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <h5 class="card-header">Yorum</h5>
+                                    <div class="card-body">
+                                        <h4 class="card-title">@item.FirstName @item.LastName</h4>
+                                        <p class="card-text">
+                                            @item.Content
+                                        </p>
+                                        <a href="#" class="btn btn-primary waves-effect waves-light">Yorumu Kaldır</a>
+                                    </div>
+                                </div>
+                            </div>
+                            count++;
+                        }
+
+                    </div>
+                    <!-- end Brandd-body-->
+                </div>
+                <!-- end Brandd -->
+
+            </div>
+            <!-- end col -->
+            <!-- end col -->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>
+

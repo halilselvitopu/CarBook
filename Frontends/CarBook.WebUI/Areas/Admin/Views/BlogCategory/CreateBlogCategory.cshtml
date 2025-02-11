@@ -1,0 +1,42 @@
+﻿@model CreateBlogCategoryDto
+@{
+    ViewData["Title"] = "CreateBlogCategory";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <h4 class="card-title">Yeni Blog Kategorisi Girişi</h4>
+                    <p class="card-subtitle mb-4">
+                        Blog kategorisi ekleme işlemini buradan yapabilirsiniz.
+                    </p>
+
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Kategori Adı</label>
+                            <input type="text" class="form-control" asp-for="Name" placeholder="Kategori adı girişi yapınız.">
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Kategoriyi Kaydet</button>
+                    </form>
+
+                </div> <!-- end card-body-->
+            </div>
+
+        </div>
+        <!-- end card-body-->
+    </div>
+    <!-- end card -->
+
+</div>
+<!-- end col -->
+<!-- end col -->
+</div>
+<!-- end page title -->
+
