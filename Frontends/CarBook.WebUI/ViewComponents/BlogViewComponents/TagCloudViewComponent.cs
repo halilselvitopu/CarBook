@@ -18,7 +18,7 @@ namespace CarBook.WebUI.ViewComponents.BlogViewComponents
         {
             ViewBag.BlogId = id;        
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7127/api/Blogs/TagClouds/GetTagCloudByBlogId?id={id}");
+            var responseMessage = await client.GetAsync($"https://localhost:7127/api/TagClouds/GetTagCloudByBlogId?id={id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -27,7 +27,7 @@ namespace CarBook.WebUI.ViewComponents.BlogViewComponents
             }
 
            
-            return View(new List<ResultTagCloudByBlogIdDto>());
+            return View();
         }
     }
 }
