@@ -1,0 +1,51 @@
+﻿@model UpdateTestimonialDto
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title"> Referans Güncelleme Alanı</h4>
+                        <p class="card-subtitle mb-4">
+                            Referans güncelleme işlemini buradan yapabilirsiniz.
+                        </p>
+
+                        <form method="post">
+                            <input type="hidden" asp-for="Id"/>
+                            <div class="form-group">
+                                <label>Ad</label>
+                                <input type="text" class="form-control" asp-for="FirstName" placeholder="Ad girişi yapınız.">
+                                <label>Soyad</label>
+                                <input type="text" class="form-control" asp-for="LastName" placeholder="Soyad girişi yapınız.">
+                                <label>Ünvan</label>
+                                <input type="text" class="form-control" asp-for="Title" placeholder="Unvan girişi yapınız.">
+                                <label>Görsel URL</label>
+                                <input type="text" class="form-control" asp-for="ImageUrl" placeholder="Referans Görseli URL girişi yapınız.">
+                                <label>Yorum</label>
+                                <textarea class="form-control" rows="5" asp-for="Comment" placeholder="Yorum girişi yapınız."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Referansı Güncelle</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+
+            </div>
+            <!-- end card-body-->
+        </div>
+        <!-- end card -->
+
+    </div>
+    <!-- end col -->
+    <!-- end col -->
+</div>
+<!-- end page title -->
+
