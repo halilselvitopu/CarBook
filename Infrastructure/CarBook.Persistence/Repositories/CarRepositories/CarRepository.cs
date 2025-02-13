@@ -19,10 +19,6 @@ namespace CarBook.Persistence.Repositories.CarRepositories
             _context = context;
         }
 
-        public async Task<int> GetCarCountAsync()
-        {
-            return await _context.Cars.CountAsync();
-        }
 
         public async Task<List<Car>> GetCarListWithBrands()
         {
