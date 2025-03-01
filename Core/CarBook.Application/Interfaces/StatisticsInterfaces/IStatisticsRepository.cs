@@ -9,21 +9,21 @@ namespace CarBook.Application.Interfaces.StatisticsInterfaces
     public interface IStatisticsRepository
     {
         Task<int> GetCarCountAsync();
-        Task<int> GetLocationCount();
-        Task<int> GetAuthorCount();
-        Task<int> GetBlogCount();
-        Task<int> GetBrandCount();
-        Task<decimal> AvgDailyCarRentalPrice();
-        Task<decimal> AvgWeeklyCarRentalPrice();
-        Task<decimal> AvgMonthlyCarRentalPrice();
-        Task<int> GetCarCountByAutoTransmission();
-        Task<string> GetBrandByMostCar();
-        Task<string> GetBlogByMostComment();
-        Task<int> GetCarsUnder1000Km();
-        Task<int> GetCountOfGasolineOrDieselCars();
-        Task<int> GetElectricCarCount();
-        Task<string> GetCheapestCar();
-        Task<int> GetMostExpensiveCar();
+        Task<int> GetLocationCountAsync();
+        Task<int> GetAuthorCountAsync();
+        Task<int> GetBlogCountAsync();
+        Task<int> GetBrandCountAsync();
+        Task<decimal> GetAvgDailyCarRentalPriceAsync();
+        Task<decimal> GetAvgWeeklyCarRentalPriceAsync();
+        Task<decimal> GetAvgMonthlyCarRentalPriceAsync();
+        Task<int> GetCarCountByAutoTransmissionAsync();
+        Task<string> GetBrandByMostCarAsync();
+        Task<string> GetBlogByMostCommentAsync();
+        Task<int> GetCarCountUnder1000KmAsync();
+        Task<int> GetCountOfGasolineOrDieselCarsAsync();
+        Task<int> GetElectricCarCountAsync();
+        Task<string> GetCheapestCarAsync();
+        Task<string> GetMostExpensiveCarAsync();
 
     }
 }

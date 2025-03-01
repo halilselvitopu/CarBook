@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Queries.StatisticsQueries
 {
-    public class GetCarCountQuery : IRequest<GetCarCountQueryResult>
+    public class GetAllStatisticsQuery : IRequest<GetAllStatisticsQueryResult>
     {
     }
 }

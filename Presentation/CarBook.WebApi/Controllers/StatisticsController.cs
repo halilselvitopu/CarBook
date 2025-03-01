@@ -16,10 +16,10 @@ namespace CarBook.WebApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetCarCount")]
-        public async Task<IActionResult> GetCarCount()
+        [HttpGet]
+        public async Task<IActionResult> GetAllStatistics()
         {
-            var values = await _mediator.Send(new GetCarCountQuery());
+            var values = await _mediator.Send(new GetAllStatisticsQuery());
             return Ok(values);
         }
     }
