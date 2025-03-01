@@ -20,20 +20,20 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
 
         public async Task<decimal> GetAvgDailyCarRentalPriceAsync()
         {
-            int id =  _context.PricingTypes.Where(y => y.Name == "Günlük").Select(z => z.Id).FirstOrDefault();
-            return await _context.RentalPrices.Where(w => w.PricingTypeId == id).AverageAsync(x => x.Price);
+            int id = _context.PricingTypes.Where(y => y.Name == "Günlük").Select(z => z.Id).SingleOrDefault();
+            return Math.Round(await _context.RentalPrices.Where(w => w.PricingTypeId == id).AverageAsync(x => x.Price),2);
         }
 
         public async Task<decimal> GetAvgMonthlyCarRentalPriceAsync()
         {
-            int id = _context.PricingTypes.Where(y => y.Name == "Aylık").Select(z => z.Id).FirstOrDefault();
-            return await _context.RentalPrices.Where(w => w.PricingTypeId == id).AverageAsync(x => x.Price);
+            int id = _context.PricingTypes.Where(y => y.Name == "Aylık").Select(z => z.Id).SingleOrDefault();
+            return Math.Round(await _context.RentalPrices.Where(w => w.PricingTypeId == id).AverageAsync(x => x.Price), 2);
         }
 
         public async Task<decimal> GetAvgWeeklyCarRentalPriceAsync()
         {
-            int id = _context.PricingTypes.Where(y => y.Name == "Haftalık").Select(z => z.Id).FirstOrDefault();
-            return await _context.RentalPrices.Where(w => w.PricingTypeId == id).AverageAsync(x => x.Price);
+            int id = _context.PricingTypes.Where(y => y.Name == "Haftalık").Select(z => z.Id).SingleOrDefault();
+            return Math.Round(await _context.RentalPrices.Where(w => w.PricingTypeId == id).AverageAsync(x => x.Price), 2);
         }
 
         public async Task<int> GetBlogCountAsync()
@@ -46,14 +46,14 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
             return await _context.Authors.CountAsync();
         }
 
-        public Task<string> GetBlogByMostCommentAsync()
+        public async Task<string> GetBlogByMostCommentAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Blogs.OrderByDescending(b => b.Comments.Count).Select(b => b.Title).FirstOrDefaultAsync();
         }
 
-        public Task<string> GetBrandByMostCarAsync()
+        public async Task<string> GetBrandByMostCarAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Cars.GroupBy(c => c.Brand.Name).OrderByDescending(x => x.Count()).Select(g => g.Key).FirstOrDefaultAsync();
         }
 
         public async Task<int> GetBrandCountAsync()
@@ -68,7 +68,7 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
 
         public async Task<int> GetCarCountByAutoTransmissionAsync()
         {
-           return await _context.Cars.Where(x => x.Transmission == "Otomatik").CountAsync();
+            return await _context.Cars.Where(x => x.Transmission == "Otomatik").CountAsync();
         }
 
         public async Task<int> GetCarCountUnder1000KmAsync()
@@ -76,10 +76,21 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
             return await _context.Cars.Where(x => x.Mileage < 1000).CountAsync();
         }
 
-        public Task<string> GetCheapestCarAsync()
+        public async Task<string> GetCheapestCarAsync()
         {
-            throw new NotImplementedException();
+            var car = await _context.RentalPrices
+                .OrderBy(rp => rp.Price)
+                .Select(rp => new { rp.Car.Brand.Name, rp.Car.Model })
+                .FirstOrDefaultAsync();
+
+            if (car != null)
+            {
+                return $"{car.Name} - {car.Model}";
+            }
+
+            return null;
         }
+
 
         public async Task<int> GetCountOfGasolineOrDieselCarsAsync()
         {
@@ -88,7 +99,7 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
 
         public async Task<int> GetElectricCarCountAsync()
         {
-           return await _context.Cars.Where(x => x.Fuel == "Elektrik").CountAsync();
+            return await _context.Cars.Where(x => x.Fuel == "Elektrik").CountAsync();
         }
 
         public async Task<int> GetLocationCountAsync()
@@ -98,7 +109,18 @@ namespace CarBook.Persistence.Repositories.StatisticsRepositories
 
         public async Task<string> GetMostExpensiveCarAsync()
         {
-            throw new  NotImplementedException();
+            var car = await _context.RentalPrices
+                .OrderByDescending(rp => rp.Price)
+                .Select(rp => new { rp.Car.Brand.Name, rp.Car.Model })
+                .FirstOrDefaultAsync();
+
+            if (car != null)
+            {
+                return $"{car.Name} - {car.Model}";
+            }
+
+            return null;
         }
+
     }
 }
