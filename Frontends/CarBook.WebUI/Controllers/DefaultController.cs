@@ -15,7 +15,7 @@ namespace CarBook.WebUI.Controllers
         }
 
 
-
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
@@ -32,6 +32,20 @@ namespace CarBook.WebUI.Controllers
             ViewBag.locations = locations;
             return View();
 
+        }
+
+        [HttpPost]
+        public IActionResult Index(string bookPickDate, string bookOffDate, string timePick, string timeOff, int locationId)
+        {
+            // Breakpoint koyarak locationId'nin değerini kontrol et
+            Console.WriteLine($"Gelen locationId: {locationId}"); // Konsola yazdır (veya logla)
+
+            TempData["bookPickDate"] = bookPickDate;
+            TempData["bookOffDate"] = bookOffDate;
+            TempData["timePick"] = timePick;
+            TempData["timeOff"] = timeOff;
+            TempData["locationId"] = locationId; // Burada locationId'nin atanmasını kontrol et
+            return RedirectToAction("Index", "RentACarList");
         }
     }
 }

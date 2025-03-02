@@ -1,6 +1,5 @@
 ﻿using CarBook.Application.Features.Mediator.Queries.RentACarQueries;
 using CarBook.Application.Features.Mediator.Results.RentACarResults;
-using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.RentACarInterfaces;
 using CarBook.Domain.Entities;
 using MediatR;
@@ -27,9 +26,11 @@ namespace CarBook.Application.Features.Mediator.Handlers.RentACarHandlers
             return values.Select(x => new GetRentACarQueryResult
             {
                 CarId = x.CarId,
-
+                Brand = x.Car?.Brand?.Name ?? "Bilinmeyen Marka",
+                Model = x.Car?.Model ?? "Bilinmeyen Model",
+                ImageUrl = x.Car?.ImageUrl ?? "",
+                Price = x.Car?.RentalPrice?.FirstOrDefault()?.Price ?? 0m,
             }).ToList();
-
         }
     }
 }
