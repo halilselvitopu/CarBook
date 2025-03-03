@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Domain.Entities
+namespace CarBook.Dto.ReservationDtos
 {
-    public class Reservation
+    public class CreateReservationDto
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -16,13 +15,8 @@ namespace CarBook.Domain.Entities
         public int? PickUpLocationId { get; set; }
         public int? DropOffLocationId { get; set; }
         public int CarId { get; set; }
-        public Car Car { get; set; }
         public int Age { get; set; }
         public int DriverLicenseYear { get; set; }
         public string? Description { get; set; }
-        public string Status { get; set; }
-        public Location PickUpLocation { get; set; }
-        public Location DropOffLocation { get; set; }
-        
     }
 }

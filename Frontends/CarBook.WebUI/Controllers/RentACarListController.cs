@@ -22,14 +22,14 @@ namespace CarBook.WebUI.Controllers
             var locationId = TempData["locationId"];
             if (locationId == null || !int.TryParse(locationId.ToString(), out int parsedLocationId))
             {
-                // Hata durumunda varsayılan bir değer veya hata sayfası döndürebilirsiniz
+                
                 return BadRequest("Location ID geçersiz veya eksik.");
             }
 
-            id = parsedLocationId; // Güvenli bir şekilde atama yapıyoruz
+            id = parsedLocationId; 
             ViewBag.locationId = id;
 
-            // Diğer verileri de TempData'dan ViewBag'e aktaralım
+            
             ViewBag.bookPickDate = TempData["bookPickDate"]?.ToString();
             ViewBag.bookOffDate = TempData["bookOffDate"]?.ToString();
             ViewBag.timePick = TempData["timePick"]?.ToString();
