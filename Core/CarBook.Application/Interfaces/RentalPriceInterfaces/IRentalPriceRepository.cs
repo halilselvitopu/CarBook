@@ -1,4 +1,5 @@
-﻿using CarBook.Domain.Entities;
+﻿using CarBook.Application.Features.Mediator.Results.RentalPriceResults;
+using CarBook.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace CarBook.Application.Interfaces.CarPricingInterfaces
     public interface IRentalPriceRepository
     {
         Task<List<RentalPrice>> GetRentalPrices();
+        Task<List<GetRentalPriceWithTimePeriodQueryResult>> GetRentalPricesWithTimePeriod();
     }
 }
