@@ -9,7 +9,7 @@ using CarBook.Application.Features.RepositoryPattern;
 using CarBook.Application.Interfaces;
 using CarBook.Application.Interfaces.BlogInterfaces;
 using CarBook.Application.Interfaces.CarInterfaces;
-using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.Interfaces.RentalPriceInterfaces;
 using CarBook.Application.Interfaces.RentACarInterfaces;
 using CarBook.Application.Interfaces.StatisticsInterfaces;
 using CarBook.Application.Interfaces.TagCloudInterfaces;

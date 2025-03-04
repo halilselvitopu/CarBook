@@ -28,9 +28,25 @@ namespace CarBook.Persistence.Repositories.RentalPriceRepositories
 
         public async Task<List<GetRentalPriceWithTimePeriodQueryResult>> GetRentalPricesWithTimePeriod()
         {
-            var values = await _context.Database.SqlQueryRaw<GetRentalPriceWithTimePeriodQueryResult>("select Brands.Name+' '+Model as Model,ImageUrl,[2] as 'DailyPrice',[3] as 'WeeklyPrice',[5] as 'MonthlyPrice' from\r\n(select Brands.Name+' '+Model as Model,Pricings.PricingId,Price,ImageUrl from RentalPrices inner join Cars on Cars.CarId=RentalPrices.CarId inner join Brands on Cars.BrandId=Brands.BrandId inner join Pricings on Pricings.PricingId=RentalPrices.PricingId) as Source_table\r\nPivot(\r\nSum(Price) For PricingId in ([2],[3],[5])\r\n) as Pivot_table").ToListAsync();
+            var query = from RentalPrice in _context.RentalPrices
+                        join cars in _context.Cars on RentalPrice.CarId equals cars.Id
+                        join brands in _context.Brands on cars.BrandId equals brands.Id
+                        group RentalPrice by new
+                        {
+                            BrandAndModel = brands.Name + " " + cars.Model
+                        } into grouped
+                        select new GetRentalPriceWithTimePeriodQueryResult
+                        {
+                            BrandAndModel = grouped.Key.BrandAndModel,
+                            DailyPrice = grouped.Where(x => x.PricingTypeId == 1).Sum(x => x.Price),
+                            WeeklyPrice = grouped.Where(x => x.PricingTypeId == 2).Sum(x => x.Price),
+                            MonthlyPrice = grouped.Where(x => x.PricingTypeId == 3).Sum(x => x.Price)
+                        };
+
+            var values = query.ToList();
             return values;
         }
+
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿using CarBook.Application.Features.Mediator.Queries.RentalPriceQueries;
 using CarBook.Application.Features.Mediator.Results.RentalPriceResults;
-using CarBook.Application.Interfaces.CarPricingInterfaces;
+using CarBook.Application.Interfaces.RentalPriceInterfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;

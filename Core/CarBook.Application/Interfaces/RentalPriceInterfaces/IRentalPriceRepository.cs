@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Application.Interfaces.CarPricingInterfaces
+namespace CarBook.Application.Interfaces.RentalPriceInterfaces
 {
     public interface IRentalPriceRepository
     {

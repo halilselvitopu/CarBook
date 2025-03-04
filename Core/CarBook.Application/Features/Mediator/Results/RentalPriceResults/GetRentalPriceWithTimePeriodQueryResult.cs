@@ -8,7 +8,7 @@ namespace CarBook.Application.Features.Mediator.Results.RentalPriceResults
 {
     public class GetRentalPriceWithTimePeriodQueryResult
     {
-        public string Model { get; set; }
+        public string BrandAndModel { get; set; }
         public decimal DailyPrice { get; set; }
         public decimal WeeklyPrice { get; set; }
         public decimal MonthlyPrice { get; set; }
