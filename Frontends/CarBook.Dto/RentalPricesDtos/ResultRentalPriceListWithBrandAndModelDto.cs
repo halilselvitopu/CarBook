@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarBook.Application.Features.Mediator.Results.RentalPriceResults
+namespace CarBook.Dto.RentalPricesDtos
 {
-    public class GetRentalPriceWithTimePeriodQueryResult
+    public class ResultRentalPriceListWithBrandAndModelDto
     {
+
         public string BrandAndModel { get; set; }
         public decimal DailyPrice { get; set; }
         public decimal WeeklyPrice { get; set; }
         public decimal MonthlyPrice { get; set; }
         public string ImageUrl { get; set; }
     }
+
 }

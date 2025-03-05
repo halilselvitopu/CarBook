@@ -27,7 +27,8 @@ namespace CarBook.Application.Features.Mediator.Handlers.RentalPriceHandlers
                 BrandAndModel = x.BrandAndModel,
                 DailyPrice = x.DailyPrice,
                 WeeklyPrice = x.WeeklyPrice,
-                MonthlyPrice = x.MonthlyPrice
+                MonthlyPrice = x.MonthlyPrice,
+                ImageUrl = x.ImageUrl
             }).ToList();
 
             return result;

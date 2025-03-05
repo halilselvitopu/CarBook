@@ -6,99 +6,122 @@
 }
 <style>
 
-	#drop option{
+    #drop option {
+        color: black;
+    }
 
-		color:black;
+</style>
 
-	}
-
+<style>
+    #time_off option {
+        color: black;
+    }
 </style>
 
 <!DOCTYPE html>
 <html lang="en">
 @await Component.InvokeAsync("UILayoutHead")
-  <body>
+<body>
 
     @await Component.InvokeAsync("UILayoutNavbar")
     <!-- END nav -->
     @await Component.InvokeAsync("DefaultMainCover")
 
-	<section class="ftco-section ftco-no-pt bg-light">
-		<div class="container">
-			<div class="row no-gutters">
-				<div class="col-md-12	featured-top">
-					<div class="row no-gutters">
-						<div class="col-md-4 d-flex align-items-center">
-							<form method="post" class="request-form ftco-animate bg-primary">
-								<h2>Aracınızı Hemen Kiralayın</h2>
-								<div class="form-group">
-									<label for="" class="label">Aracın Alınacağı Lokasyon</label>
-									<select name="locationId" class="form-control" id="drop">
-										@foreach (var item in (List<SelectListItem>)ViewBag.locations)
-										{
-											<option value="@item.Value">@item.Text</option>
-										}
-									</select>
-								</div>
-								<div class="d-flex">
-									<div class="form-group mr-2">
-										<label for="" class="label">Alınacak TARİH</label>
-										<input type="text" class="form-control" name="bookPickDate" id="book_pick_date" placeholder="Date">
-									</div>
-									<div class="form-group ml-2">
-										<label for="" class="label">İADE TARİHİ</label>
-										<input type="text" class="form-control" name="bookOffDate" id="book_off_date" placeholder="Date">
-									</div>
-								</div>
-								<div class="form-group">
-									<label for="" class="label">Alış Saatİ</label>
-									<input type="text" class="form-control" name="timePick" id="time_pick" placeholder="Time">
-								</div>
-								<div class="form-group">
-									<label for="" class="label">İade Saatİ</label>
-									<input type="text" class="form-control" name="timeOff" id="time_pick" placeholder="Time">
-								</div>
-								<div class="form-group">
-									<button class="btn btn-secondary py-3 px-4">Uygun Araçları Listele</button>
-								</div>
-							</form>
-						</div>
-						<div class="col-md-8 d-flex align-items-center">
-							<div class="services-wrap rounded-right w-100">
-								<h3 class="heading-section mb-4">Araç Kiralamanın En Basit Yolu</h3>
-								<div class="row d-flex mb-4">
-									<div class="col-md-4 d-flex align-self-stretch ftco-animate">
-										<div class="services w-100 text-center">
-											<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-											<div class="text w-100">
-												<h3 class="heading mb-2">Aracı Almak İstediğin Lokasyonu Seç</h3>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 d-flex align-self-stretch ftco-animate">
-										<div class="services w-100 text-center">
-											<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
-											<div class="text w-100">
-												<h3 class="heading mb-2">En Uygun Araçları Gör</h3>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 d-flex align-self-stretch ftco-animate">
-										<div class="services w-100 text-center">
-											<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
-											<div class="text w-100">
-												<h3 class="heading mb-2">İstediğin Aracı Kirala!</h3>
-											</div>
-										</div>
-									</div>
-								</div>
-								<p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
+    <section class="ftco-section ftco-no-pt bg-light">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-12	featured-top">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 d-flex align-items-center">
+                            <form method="post" class="request-form ftco-animate bg-primary">
+                                <h2>Aracınızı Hemen Kiralayın</h2>
+                                <div class="form-group">
+                                    <label for="" class="label">Aracın Alınacağı Lokasyon</label>
+                                    <select name="locationId" class="form-control" id="drop">
+                                        @foreach (var item in (List<SelectListItem>)ViewBag.locations)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="form-group mr-2">
+                                        <label for="" class="label">Alınacak TARİH</label>
+                                        <input type="text" class="form-control" name="bookPickDate" id="book_pick_date" placeholder="Tarih Seçiniz">
+                                    </div>
+                                    <div class="form-group ml-2">
+                                        <label for="" class="label">İADE TARİHİ</label>
+                                        <input type="text" class="form-control" name="bookOffDate" id="book_off_date" placeholder="Tarih Seçiniz">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="" class="label">Alış Saatİ</label>
+                                    <select class="form-control" name="timeOff" id="time_off">
+                                        <option value="12:00am">00.00</option>
+                                        <option value="3:00am">03.00</option>
+                                        <option value="6:00am">06.00</option>
+                                        <option value="9:00am">09.00</option>
+                                        <option value="12:00pm">12.00</option>
+                                        <option value="3:00pm">15.00</option>
+                                        <option value="6:00pm">18.00</option>
+                                        <option value="9:00pm">21.00</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="" class="label">İade Saatİ</label>
+                                    <select class="form-control" name="timeOff" id="time_off">
+                                        <option value="12:00am">00.00</option>
+                                        <option value="3:00am">03.00</option>
+                                        <option value="6:00am">06.00</option>
+                                        <option value="9:00am">09.00</option>
+                                        <option value="12:00pm">12.00</option>
+                                        <option value="3:00pm">15.00</option>
+                                        <option value="6:00pm">18.00</option>
+                                        <option value="9:00pm">21.00</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-secondary py-3 px-4">Uygun Araçları Listele</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-8 d-flex align-items-center">
+                            <div class="services-wrap rounded-right w-100">
+                                <h3 class="heading-section mb-4">Araç Kiralamanın En Basit Yolu</h3>
+                                <div class="row d-flex mb-4">
+                                    <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                        <div class="services w-100 text-center">
+                                            <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                            <div class="text w-100">
+                                                <h3 class="heading mb-2">Aracı Almak İstediğin Lokasyonu Seç</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                        <div class="services w-100 text-center">
+                                            <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                            <div class="text w-100">
+                                                <h3 class="heading mb-2">En Uygun Araçları Gör</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                        <div class="services w-100 text-center">
+                                            <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                            <div class="text w-100">
+                                                <h3 class="heading mb-2">İstediğin Aracı Kirala!</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p><a href="/RentalPrice/Index/" class="btn btn-primary py-3 px-4">Araç Fiyatlarımızı Görüntüleyin</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
 
     @await Component.InvokeAsync("DefaultLast5CarsWithBrands")
 
@@ -119,7 +142,7 @@
     @await Component.InvokeAsync("UILayoutLoader")
 
     @await Component.InvokeAsync("UILayoutScripts")
-    
-  </body>
+
+</body>
 </html>
 

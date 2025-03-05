@@ -40,7 +40,8 @@ namespace CarBook.Persistence.Repositories.RentalPriceRepositories
                             BrandAndModel = grouped.Key.BrandAndModel,
                             DailyPrice = grouped.Where(x => x.PricingTypeId == 1).Sum(x => x.Price),
                             WeeklyPrice = grouped.Where(x => x.PricingTypeId == 2).Sum(x => x.Price),
-                            MonthlyPrice = grouped.Where(x => x.PricingTypeId == 3).Sum(x => x.Price)
+                            MonthlyPrice = grouped.Where(x => x.PricingTypeId == 3).Sum(x => x.Price),
+                            ImageUrl = grouped.Select(x => x.Car.ImageUrl).FirstOrDefault()
                         };
 
             var values = query.ToList();
