@@ -38,18 +38,18 @@
                                     {
                                         count++;
 
-                                    <tr>
-                                        <th scope="row">@count</th>
-                                        <td>@item.BrandName</td>
-                                        <td>@item.Model</td>
-                                        <td>@item.Transmission</td>
-                                        <td>@item.Mileage</td>
-                                        <td><a href = "/AdminCar/RemoveCar/@item.Id" class="btn btn-outline-danger">Sil</a></td>
-                                        <td><a href = "/AdminCar/UpdateCar/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
-                                        <td><a href = "/CarList/CarDetail/@item.Id" class="btn btn-outline-dark">Detaylar</a></td>
-                                        <td><a href = "/CarList/CarDetail/@item.Id" class="btn btn-outline-warning">Sitede Gör</a></td>
-                                        <td><a href = "/CarList/CarDetail/@item.Id" class="btn btn-outline-secondary">Fiyat Bilgisi</a></td>
-                                    </tr>
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.BrandName</td>
+                                            <td>@item.Model</td>
+                                            <td>@item.Transmission</td>
+                                            <td>@item.Mileage</td>
+                                            <td><a href="/AdminCar/RemoveCar/@item.Id" class="btn btn-outline-danger">Sil</a></td>
+                                            <td><a href="/AdminCar/UpdateCar/@item.Id" class="btn btn-outline-success">Güncelle</a></td>
+                                            <td><a href="/Admin/CarFeature/Index/@item.Id" class="btn btn-outline-dark">Detaylar</a></td>
+                                            <td><a href="/AdminCar/CarDetail/@item.Id" class="btn btn-outline-warning">Sitede Gör</a></td>
+                                            <td><a href="/AdminCar/CarDetail/@item.Id" class="btn btn-outline-secondary">Fiyat Bilgisi</a></td>
+                                        </tr>
                                     }
                                 </tbody>
                             </table>
@@ -63,9 +63,6 @@
 
             </div>
             <!-- end col -->
-
-
-            
             <!-- end col -->
         </div>
         <!-- end page title -->
