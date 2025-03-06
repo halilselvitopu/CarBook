@@ -13,6 +13,7 @@ namespace CarBook.Domain.Entities
         public string LastName { get; set; }
         public DateTime CreatedTime { get; set; }
         public string Content { get; set; }
+        public string Email { get; set; }
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
     }

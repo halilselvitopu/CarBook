@@ -14,6 +14,7 @@ namespace CarBook.Dto.RentalPricesDtos
         public decimal WeeklyPrice { get; set; }
         public decimal MonthlyPrice { get; set; }
         public string ImageUrl { get; set; }
+        public int CarId { get; set; }
     }
 
 }

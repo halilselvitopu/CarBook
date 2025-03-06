@@ -16,6 +16,7 @@
         
         <!-- END comment-list -->
         @await Component.InvokeAsync("LeaveAComment")
+        @await Html.PartialAsync("~/Views/Blog/AddComment.cshtml", new { id = ViewBag.BlogId })
         
     </div>
 

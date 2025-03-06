@@ -25,11 +25,11 @@ namespace CarBook.Application.Features.Mediator.Handlers.AuthorHandlers
             var value = await _repository.GetByIdAsync(request.Id);
             return new GetAuthorByIdQueryResult
             {
+                Id = value.Id,
                 Description = value.Description,
                 FirstName = value.FirstName,
                 LastName = value.LastName,
-                Blogs = value.Blogs,
-                Id = value.Id,
+                Blogs = value.Blogs,           
                 ImageUrl = value.ImageUrl,
             };
 
