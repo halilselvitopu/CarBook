@@ -14,5 +14,6 @@ namespace CarBook.Application.Features.RepositoryPattern
         Task UpdateAsync(T entity);
         Task RemoveAsync(T entity);
         Task<List<T>> GetCommentsByBlogIdAsync(int blogId);
+        Task<int> GetCommentCountByBlog(int id);
     }
 }
