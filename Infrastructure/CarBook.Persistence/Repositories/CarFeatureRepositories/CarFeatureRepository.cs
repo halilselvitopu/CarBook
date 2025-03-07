@@ -19,6 +19,20 @@ namespace CarBook.Persistence.Repositories.CarFeatureRepositories
             _context = context;
         }
 
+        public async Task ChangeCarFeatureStatusToAvailable(int id)
+        {
+            var values = await _context.CarFeatures.Where(x => x.Id == id).FirstOrDefaultAsync();
+             values.IsAvailable = true;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task ChangeCarFeatureStatusToNotAvailable(int id)
+        {
+            var values = await _context.CarFeatures.Where(x => x.Id == id).FirstOrDefaultAsync();
+            values.IsAvailable = false;
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<CarFeature>> GetCarFeatureByCarId(int id)
         {
             var values = await _context.CarFeatures.Include(y => y.Feature).Where(x => x.CarId == id).ToListAsync();

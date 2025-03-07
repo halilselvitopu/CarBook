@@ -3,6 +3,7 @@ using CarBook.Dto.CarFeatureDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text;
 
 namespace CarBook.WebUI.Areas.Admin.Controllers
 {
@@ -18,6 +19,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
         }
 
         [Route("Index/{id}")]
+        [HttpGet]
         public async Task<IActionResult> Index(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -30,6 +32,30 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             }
 
             return View();
+        }
+
+        [Route("Index/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> Index(List<ResultCarFeatureByCarIdDto> resultCarFeatureByCarIdDto)
+        {
+            foreach (var item in resultCarFeatureByCarIdDto)
+            {
+                if (item.IsAvailable)
+                {  
+                    var client = _httpClientFactory.CreateClient();
+                    await client.GetAsync("https://localhost:7127/api/CarFeatures/ChangeCarFeatureStatusToAvailable?id=" + item.Id);
+
+
+                }
+                else
+                {
+                    var client = _httpClientFactory.CreateClient();
+                    await client.GetAsync("https://localhost:7127/api/CarFeatures/ChangeCarFeatureStatusToNotAvailable?id=" + item.Id);
+                }
+
+            }
+            return RedirectToAction("Index", "AdminCar");
+
         }
     }
 }
