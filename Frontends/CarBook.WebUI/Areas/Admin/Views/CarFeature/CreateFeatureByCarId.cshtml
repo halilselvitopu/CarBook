@@ -1,0 +1,46 @@
+﻿@model List<ResultFeatureDto>
+@{
+    ViewData["Title"] = "CreateFeatureByCarId";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="Brandd">
+                    <div class="Brandd-body">
+                        <h4 class="Brandd-title">Araca Ait Özellik Ekleme Alanı</h4>
+                        <p class="Brandd-subtitle mb-4">
+                            Araca Ait Özellik tanımlamalarını bu bölümden yapabilirsiniz.
+                        </p>
+                        <form method="post">
+                            @for (int i = 0; i < Model.Count; i++)
+                            {
+                                <div class="form-check">
+                                    <input type="hidden" asp-for="@Model[i].Id" />
+                                    <input type="hidden" asp-for="@Model[i].Name" />
+                                    <input type="checkbox" class="form-check-input" />
+                                    <label class="form-check-label">@Model[i].Name</label>
+                                </div>
+                            }
+                            <br />
+                            <button class="btn btn-primary">Araca Özellikleri Tanımla</button>
+                        </form>
+                    </div>
+                    <!-- end Brandd-body-->
+                </div>
+                <!-- end Brandd -->
+
+            </div>
+            <!-- end col -->
+            <!-- end col -->
+        </div>
+        <!-- end page title -->
+
+    </div> <!-- container-fluid -->
+</div>
+
+

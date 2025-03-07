@@ -37,5 +37,12 @@ namespace CarBook.WebApi.Controllers
             await _mediator.Send(new UpdateCarFeatureStatusToNotAvailableCommand(id));
             return Ok("Başarıyla Güncellendi.");
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateCarFeatureByCar(CreateCarFeatureByCarCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok("Başarıyla Eklendi.");
+        }
     }
 }
