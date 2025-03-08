@@ -19,6 +19,27 @@ namespace CarBook.Persistence.Repositories.CarRepositories
             _context = context;
         }
 
+        public async Task<int> GetCarCountByBrandName(string brandName)
+        {
+            return await _context.Cars.Where(x => x.Brand.Name == brandName).CountAsync();
+        }
+
+        public async Task<Dictionary<string, int>> GetCarCountByBrandName()
+        {
+            return await _context.Cars
+                .Include(x => x.Brand)
+                .GroupBy(x => x.Brand.Name)
+                .ToDictionaryAsync(g => g.Key, g => g.Count());
+        }
+
+        public async Task<Dictionary<string, int>> GetCarCountByLocation()
+        {
+            return await _context.Cars
+                .Include(x => x.RentACars)
+                .ThenInclude(x => x.Location)
+                .GroupBy(x => x.RentACars.FirstOrDefault().Location.Name)
+                .ToDictionaryAsync(g => g.Key, g => g.Count());
+        }
 
         public async Task<List<Car>> GetCarListWithBrands()
         {
