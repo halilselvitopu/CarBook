@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CarBook.Dto.CarDetailDtos;
+using CarBook.Dto.CarDtos;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CarBook.WebUI.ViewComponents.CarDetailViewComponent
 {
@@ -15,11 +18,11 @@ namespace CarBook.WebUI.ViewComponents.CarDetailViewComponent
         {
             ViewBag.carId = id;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7127/api/Cars/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:7127/api/CarDetails/GetCarDetailByCarId/" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<ResultCarWithBrandDto>(jsonData);
+                var values = JsonConvert.DeserializeObject<ResultCarDetailByCarIdDto>(jsonData);
                 return View(values);
             }
             return View();
