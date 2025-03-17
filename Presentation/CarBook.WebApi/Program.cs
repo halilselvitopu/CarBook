@@ -32,8 +32,25 @@ using CarBook.Persistence.Repositories.ReviewRepositories;
 using FluentValidation.AspNetCore;
 using System.Reflection;
 using CarBook.Application.Validators.ReviewValidators;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidAudience = "https://localhost",
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("carbookcarbook01")),
+            ValidateIssuerSigningKey = true,
+        };
+    });
 
 // Add services to the container.
 
