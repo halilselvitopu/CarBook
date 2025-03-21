@@ -35,6 +35,7 @@ using CarBook.Application.Validators.ReviewValidators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using CarBook.Application.Tools;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,10 +45,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.RequireHttpsMetadata = false;
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidAudience = "https://localhost",
+            ValidAudience = JwtTokenDefaults.ValidAudience,
+            ValidIssuer = JwtTokenDefaults.Issuer,
             ValidateLifetime = true,
             ClockSkew = TimeSpan.Zero,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("carbookcarbook01")),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
             ValidateIssuerSigningKey = true,
         };
     });
@@ -134,6 +136,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
